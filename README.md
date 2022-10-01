@@ -9,4 +9,4 @@ Following Features are to be developed:
 
 Any suggestions or Updates to API should be reflected here first.
 
-Register Response should be return three objects: (user [Type:User], error [Type:Boolean], message [Type:String])
+Register Response should return three objects: (user [User Object], error [Boolean], message [String])

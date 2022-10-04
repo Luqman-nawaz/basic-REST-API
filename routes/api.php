@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UsersController;
+use App\Http\Resources\QuoteResource;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Resources\UserResource;
@@ -20,13 +21,15 @@ use App\Models\User;
 
 Route::post('/register', [UsersController::class, 'register']);
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::post('/login', [UsersController::class, 'authenticate']);
+
+Route::get('/users', [UsersController::class, 'index']);
 
 Route::get('/quotes', function(){
-    return new UserResource(quotes::all());
+    return new QuoteResource(quotes::all());
 });
+
+Route::PUT('/user/api/edit', [UsersController::class, 'store']);
 
 Route::get('/user/{id}', function ($id) {
     return new UserResource(User::findOrFail($id));

@@ -2,9 +2,9 @@
 
 Following Features are to be developed:
 
-- Registration (Developed)
-- Login
-- Fetch All Users
+- Registration (/register, POST Request, [Username, Email, Password])
+- Login (/login, POST Request, [Email, Password])
+- Fetch All Users (/users, GET)
 - Update Users [Email, Password]
 
 Any suggestions or Updates to API should be reflected here first.

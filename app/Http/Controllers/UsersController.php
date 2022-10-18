@@ -36,7 +36,7 @@ class UsersController extends Controller
 
         $array = array(
             'error' => $error,
-            'messsage' => $message,
+            'message' => $message,
             'user' => $user,
         );
 

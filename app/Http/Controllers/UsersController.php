@@ -27,10 +27,10 @@ class UsersController extends Controller
         );
         
         if($user = User::create($attributes)){
-            $error = false;
+            $error = 200;
             $message = "Account Created Successfully!";
         }else{
-            $error = true;
+            $error = 400;
             $message = "Could not create account";
         }
 
@@ -54,26 +54,26 @@ class UsersController extends Controller
         $user = User::where('email', $request->email)->get();
 
         if($user->isEmpty()){
-            $error = true;
+            $error = 400;
             $message = "Email Not Found!";
             $user = array();
         }else{
 
             if(!Hash::check($request->password, $user->first()->password)){
-                $error = true;
+                $error = 400;
                 $message = "Password does not match!";
                 $user = array();
             }else{
-                $error = false;
+                $error = 200;
                 $message = "Logged in successfully!";
             }
 
         }
         
         $user = array(
-            'id' => $user->first()->id,
             'username' => $user->first()->username,
             'email' => $user->first()->email,
+            'id' => $user->first()->id,
         );
 
         $array = array(

@@ -34,17 +34,13 @@ class UsersController extends Controller
             $message = "Could not create account";
         }
 
-        return json_encode(array([
-            [
-                'error' => $error,
-            ],
-            [
-                'message' => $message,
-            ],
-            [
-                'user' => $user,
-            ]
-            ]));
+        $array = array(
+            'error' => $error,
+            'messsage' => $message,
+            'user' => $user,
+        );
+
+        return json_encode($array);
 
     }
 

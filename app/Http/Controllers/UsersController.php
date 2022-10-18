@@ -56,24 +56,33 @@ class UsersController extends Controller
         if($user->isEmpty()){
             $error = true;
             $message = "Email Not Found!";
-            $user = [];
+            $user = array();
         }else{
 
             if(!Hash::check($request->password, $user->first()->password)){
                 $error = true;
                 $message = "Password does not match!";
-                $user = [];
+                $user = array();
             }else{
                 $error = false;
                 $message = "Logged in successfully!";
             }
 
         }
-        return json_encode(array([
-            ['error' => $error],
-            ['message' => $message],
-            ['user' => $user],
-        ]));
+        
+        $user = array(
+            'id' => $user->first()->id,
+            'username' => $user->first()->username,
+            'email' => $user->first()->email,
+        );
+
+        $array = array(
+            'error' => $error,
+            'message' => $message,
+            'user' => $user,
+        );
+
+        return json_encode($array);
 
     }
 

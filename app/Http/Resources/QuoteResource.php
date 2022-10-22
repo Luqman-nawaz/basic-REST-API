@@ -14,9 +14,6 @@ class QuoteResource extends JsonResource
      */
     public function toArray($request)
     {
-        return[
-        'saidby' => $this->saidby,
-        'quote' => $this->quote,
-        ];
+        return parent::toArray($request);
     }
 }
